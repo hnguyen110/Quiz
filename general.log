@@ -1,0 +1,37 @@
+2022-09-25 20:27:53,995 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2022-09-25 20:27:57,932 (ERROR) - django.request - Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 74, in __call__
+    rendered = toolbar.render_toolbar()
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/debug_toolbar/toolbar.py", line 79, in render_toolbar
+    return render_to_string("debug_toolbar/base.html", context)
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: debug_toolbar/base.html
+2022-09-25 20:27:58,246 (ERROR) - django.request - Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 74, in __call__
+    rendered = toolbar.render_toolbar()
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/debug_toolbar/toolbar.py", line 79, in render_toolbar
+    return render_to_string("debug_toolbar/base.html", context)
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/hn/.local/share/virtualenvs/api-1W7627CB/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: debug_toolbar/base.html
+2022-09-25 20:29:18,428 (INFO) - django.utils.autoreload - /Users/hn/Desktop/quiz/api/quiz/settings.py changed, reloading.
+2022-09-25 20:29:19,168 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2022-09-25 20:29:31,343 (INFO) - django.utils.autoreload - /Users/hn/Desktop/quiz/api/quiz/settings.py changed, reloading.
+2022-09-25 20:29:32,133 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2022-09-25 20:29:37,916 (INFO) - django.utils.autoreload - /Users/hn/Desktop/quiz/api/quiz/settings.py changed, reloading.
+2022-09-25 20:29:38,875 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2022-09-25 20:29:42,705 (WARNING) - django.request - Not Found: /
+2022-09-25 20:29:42,846 (WARNING) - django.request - Not Found: /favicon.ico
+2022-09-25 20:29:48,212 (WARNING) - django.request - Method Not Allowed: /auth/jwt/create
+2022-09-25 20:29:54,137 (WARNING) - django.request - Unauthorized: /auth/users/
