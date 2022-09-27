@@ -2,7 +2,7 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.viewsets import ModelViewSet
 
 from quiz_app.models.quiz import Quiz
-from quiz_app.serializers.base_quiz_serializer import BaseQuizSerializer
+from quiz_app.serializers.quiz.base_quiz_serializer import BaseQuizSerializer
 
 
 class BaseQuizViewSet(ModelViewSet):
