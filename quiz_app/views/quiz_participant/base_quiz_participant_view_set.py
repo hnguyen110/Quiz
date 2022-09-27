@@ -10,7 +10,10 @@ class BaseQuizParticipantViewSet(ModelViewSet):
     permission_classes = [IsAdminUser]
 
     def get_queryset(self):
-        return QuizParticipant.objects.filter(quiz_id=self.kwargs['quiz_pk'])
+        return QuizParticipant \
+            .objects \
+            .filter(quiz_id=self.kwargs['quiz_pk']) \
+            .filter(isComplete=False)
 
     def get_serializer_context(self):
         return {
