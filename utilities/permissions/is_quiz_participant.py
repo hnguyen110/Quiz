@@ -13,5 +13,5 @@ class IsQuizParticipant(BasePermission):
             .first()
         return participant is not None and participant.user == request.user
 
-    def has_object_permission(self, request, view, obj):
-        return obj.participant.user == request.user
+    # def has_object_permission(self, request, view, obj):
+    #     return obj.participant.user == request.user
