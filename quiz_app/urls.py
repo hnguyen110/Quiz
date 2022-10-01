@@ -7,7 +7,6 @@ from quiz_app.views.quiz_participant.base_quiz_participant_view_set import BaseQ
 from quiz_app.views.quiz_participant.create_quiz_participants_view_set import CreateQuizParticipantsViewSet
 from quiz_app.views.quiz_result.base_quiz_result_view_set import BaseQuizResultViewSet
 from quiz_app.views.user_answer.base_user_answer_view_set import BaseUserAnswerViewSet
-from quiz_app.views.user_answer.create_user_answers_view_set import CreateUserAnswersViewSet
 
 router = routers.DefaultRouter()
 router.register('quizzes', BaseQuizViewSet, basename='quizzes')
@@ -22,7 +21,6 @@ question_router.register('solutions', BaseQuestionSolutionViewSet, basename='que
 
 participant_router = routers.NestedDefaultRouter(quiz_router, 'participants', lookup='participant')
 participant_router.register('answers', BaseUserAnswerViewSet, basename='participant-answers')
-participant_router.register('save-answers', CreateUserAnswersViewSet, basename='save-answers')
 participant_router.register('results', BaseQuizResultViewSet, basename='participant-quiz-results')
 
 urlpatterns = router.urls + quiz_router.urls + question_router.urls + participant_router.urls
