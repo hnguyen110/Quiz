@@ -1,4 +1,7 @@
-from rest_framework.permissions import IsAdminUser
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from quiz_app.models.quiz import Quiz
@@ -16,3 +19,11 @@ class BaseQuizViewSet(ModelViewSet):
         return {
             'owner': self.request.user
         }
+
+    @action(detail=False, methods=['get'], url_path='assigned-quizzes', permission_classes=[IsAuthenticated])
+    def get_assigned_quizzes(self, request, **kwargs):
+        queryset = Quiz \
+            .objects \
+            .filter(participants__user=self.request.user, participants__isComplete=False)
+        serializer = BaseQuizSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

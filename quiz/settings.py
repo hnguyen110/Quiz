@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djoser',
+    'corsheaders',
+    'django_rest_passwordreset',
     'debug_toolbar',
     'core',
     'quiz_app'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -140,6 +143,20 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 1025
+DEFAULT_FROM_EMAIL = 'administrator@pandadoesquizzes.com'
+
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/{uid}/{token}',
 }
 
 LOGGING = {
