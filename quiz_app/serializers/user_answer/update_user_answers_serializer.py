@@ -1,6 +1,7 @@
 from django.db import transaction
 from rest_framework import serializers
 
+from quiz_app.models.quiz_participant import QuizParticipant
 from quiz_app.models.user_answer import UserAnswer
 from quiz_app.serializers.user_answer.update_user_answer_serializer import UpdateUserAnswerSerializer
 
@@ -18,7 +19,9 @@ class UpdateUserAnswersSerializer(serializers.Serializer):
                     participant_id=participant_id,
                 ) for answer in self.validated_data['answers']
             ]
-            return UserAnswer.objects.bulk_update(answers, ['selected_solution'])
+            UserAnswer.objects.bulk_update(answers, ['selected_solution'])
+            QuizParticipant.objects.filter(pk=participant_id).update(isComplete=True)
+            return answers
 
     def update(self, instance, validated_data):
         pass
