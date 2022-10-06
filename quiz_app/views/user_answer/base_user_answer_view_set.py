@@ -27,7 +27,7 @@ class BaseUserAnswerViewSet(ModelViewSet):
             'participant_id': self.kwargs['participant_pk']
         }
 
-    @action(detail=False, methods=['put'], url_path='update_answers')
+    @action(detail=False, methods=['put'], url_path='update-answers')
     def update_answers(self, request, **kwargs):
         serializer = UpdateUserAnswersSerializer(
             data=request.data,
