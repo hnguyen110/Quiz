@@ -50,3 +50,9 @@ class BaseQuizViewSet(ModelViewSet):
         )
         serializer = GetAssignedQuizDetailsSerializer(quiz)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['get'], url_path='submitted-quizzes', permission_classes=[IsAuthenticated])
+    def get_submitted_quizzes(self, request, **kwargs):
+        queryset = QuizParticipant.objects.filter(user=self.request.user, isComplete=True)
+        serializer = BaseQuizParticipantWithDetailsSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

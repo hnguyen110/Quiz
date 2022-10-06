@@ -9,7 +9,7 @@ class IsQuizParticipant(BasePermission):
             return False
         participant = QuizParticipant \
             .objects \
-            .filter(pk=view.kwargs['participant_pk']) \
+            .filter(pk=view.kwargs['participant_pk'] if 'participant_pk' in view.kwargs else view.kwargs['pk']) \
             .first()
         return participant is not None and participant.user == request.user
 

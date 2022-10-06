@@ -21,6 +21,6 @@ question_router.register('solutions', BaseQuestionSolutionViewSet, basename='que
 
 participant_router = routers.NestedDefaultRouter(quiz_router, 'participants', lookup='participant')
 participant_router.register('answers', BaseUserAnswerViewSet, basename='participant-answers')
-participant_router.register('results', BaseQuizResultViewSet, basename='participant-quiz-results')
+# participant_router.register('results', BaseQuizResultViewSet, basename='participant-quiz-results')
 
 urlpatterns = router.urls + quiz_router.urls + question_router.urls + participant_router.urls
