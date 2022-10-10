@@ -5,7 +5,6 @@ from quiz_app.views.question_solution.base_question_solution_view_set import Bas
 from quiz_app.views.quiz.base_quiz_view_set import BaseQuizViewSet
 from quiz_app.views.quiz_participant.base_quiz_participant_view_set import BaseQuizParticipantViewSet
 from quiz_app.views.quiz_participant.create_quiz_participants_view_set import CreateQuizParticipantsViewSet
-from quiz_app.views.quiz_result.base_quiz_result_view_set import BaseQuizResultViewSet
 from quiz_app.views.user_answer.base_user_answer_view_set import BaseUserAnswerViewSet
 
 router = routers.DefaultRouter()
