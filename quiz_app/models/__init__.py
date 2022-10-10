@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from django_rest_passwordreset.signals import reset_password_token_created
 
 from . import course
+from . import course_section
 from . import question
 from . import question_solution
 from . import quiz
