@@ -1,6 +1,7 @@
 from rest_framework_nested import routers
 
 from quiz_app.views.course.base_course_view_set import BaseCourseViewSet
+from quiz_app.views.course_participant.base_course_participant_view_set import BaseCourseParticipantViewSet
 from quiz_app.views.course_section.base_course_section_view_set import BaseCourseSectionViewSet
 from quiz_app.views.question.base_question_view_set import BaseQuestionViewSet
 from quiz_app.views.question_solution.base_question_solution_view_set import BaseQuestionSolutionViewSet
@@ -27,5 +28,6 @@ participant_router.register('answers', BaseUserAnswerViewSet, basename='particip
 
 course_router = routers.NestedDefaultRouter(router, 'courses', lookup='course')
 course_router.register('sections', BaseCourseSectionViewSet, basename='course-sections')
+course_router.register('participants', BaseCourseParticipantViewSet, basename='course-participants')
 
 urlpatterns = router.urls + quiz_router.urls + question_router.urls + participant_router.urls + course_router.urls
