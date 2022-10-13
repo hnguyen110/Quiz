@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('quiz_app', '0004_alter_useranswer_question'),
     ]
