@@ -1,5 +1,6 @@
 from rest_framework_nested import routers
 
+from quiz_app.views.course.base_course_view_set import BaseCourseViewSet
 from quiz_app.views.question.base_question_view_set import BaseQuestionViewSet
 from quiz_app.views.question_solution.base_question_solution_view_set import BaseQuestionSolutionViewSet
 from quiz_app.views.quiz.base_quiz_view_set import BaseQuizViewSet
@@ -9,6 +10,7 @@ from quiz_app.views.user_answer.base_user_answer_view_set import BaseUserAnswerV
 
 router = routers.DefaultRouter()
 router.register('quizzes', BaseQuizViewSet, basename='quizzes')
+router.register('courses', BaseCourseViewSet, basename='courses')
 
 quiz_router = routers.NestedDefaultRouter(router, 'quizzes', lookup='quiz')
 quiz_router.register('questions', BaseQuestionViewSet, basename='quiz-questions')
