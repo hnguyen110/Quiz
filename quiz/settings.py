@@ -162,6 +162,12 @@ DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'auth/reset/{uid}/{token}',
 }
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_ENDPOINT_URL = 'http://localhost:4566'
+AWS_ACCESS_KEY_ID = 'local_user'
+AWS_SECRET_ACCESS_KEY = 'password'
+AWS_STORAGE_BUCKET_NAME = 'quiz'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

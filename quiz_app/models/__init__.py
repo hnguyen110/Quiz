@@ -9,7 +9,7 @@ from . import question
 from . import question_solution
 from . import quiz
 from . import quiz_participant
-from . import section_item
+from . import course_section_item
 from . import user_answer
 
 
