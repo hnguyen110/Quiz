@@ -5,11 +5,11 @@ from django_rest_passwordreset.signals import reset_password_token_created
 from . import course
 from . import course_participant
 from . import course_section
+from . import course_section_item
 from . import question
 from . import question_solution
 from . import quiz
 from . import quiz_participant
-from . import course_section_item
 from . import user_answer
 
 
