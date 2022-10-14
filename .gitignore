@@ -1,3 +1,4 @@
 general.log
 db.sqlite3
 media/
+.idea/
