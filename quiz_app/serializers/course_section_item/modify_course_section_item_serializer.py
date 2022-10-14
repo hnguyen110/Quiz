@@ -15,3 +15,7 @@ class ModifyCourseSectionItemSerializer(ModelSerializer):
             .objects \
             .create(course_section_id=course_section_id, size=data.size,
                     content_type=data.content_type, **validated_data)
+
+    def update(self, instance, validated_data):
+        instance.data.delete()
+        return super(ModifyCourseSectionItemSerializer, self).update(instance, validated_data)
