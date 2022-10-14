@@ -1,18 +1,25 @@
-from rest_framework.permissions import IsAdminUser
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from quiz_app.models.course import Course
+from quiz_app.models.course_participant import CourseParticipant
 from quiz_app.serializers.course.base_course_serializer import BaseCourseSerializer
+from quiz_app.serializers.course_participant.base_course_participant_with_details_serializer import \
+    BaseCourseParticipantWithDetailsSerializer
 from utilities.permissions.is_course_participant import IsCourseParticipant
 
 
 class BaseCourseViewSet(ModelViewSet):
     serializer_class = BaseCourseSerializer
-    permission_classes = [IsAdminUser]
 
     def get_permissions(self):
         if self.action == 'retrieve':
             permission_classes = [IsCourseParticipant]
+        elif self.action == 'get_assigned_courses':
+            permission_classes = [IsAuthenticated]
         else:
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
@@ -27,3 +34,9 @@ class BaseCourseViewSet(ModelViewSet):
         return {
             'owner': self.request.user
         }
+
+    @action(detail=False, methods=['get'], url_path='assigned-courses')
+    def get_assigned_courses(self, request, **kwargs):
+        queryset = CourseParticipant.objects.filter(user=self.request.user)
+        serializer = BaseCourseParticipantWithDetailsSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
