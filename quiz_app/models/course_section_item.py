@@ -14,6 +14,3 @@ class CourseSectionItem(models.Model):
     def delete(self, using=None, keep_parents=False):
         self.data.storage.delete(self.data.name)
         super(CourseSectionItem, self).delete()
-
-# aws --endpoint-url=http://localhost:4566 s3 rm --recursive s3://quiz/data/
-# aws --endpoint-url=http://localhost:4566 s3 ls --recursive quiz

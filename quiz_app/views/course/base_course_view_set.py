@@ -1,11 +1,13 @@
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from quiz_app.models.course import Course
 from quiz_app.models.course_participant import CourseParticipant
+from quiz_app.serializers.course.assigned_course_details_serializer import AssignedCourseDetailsSerializer
 from quiz_app.serializers.course.base_course_serializer import BaseCourseSerializer
 from quiz_app.serializers.course_participant.base_course_participant_with_details_serializer import \
     BaseCourseParticipantWithDetailsSerializer
@@ -20,6 +22,8 @@ class BaseCourseViewSet(ModelViewSet):
             permission_classes = [IsCourseParticipant]
         elif self.action == 'get_assigned_courses':
             permission_classes = [IsAuthenticated]
+        elif self.action == 'get_assigned_course_details':
+            permission_classes = [IsCourseParticipant]
         else:
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
@@ -39,4 +43,15 @@ class BaseCourseViewSet(ModelViewSet):
     def get_assigned_courses(self, request, **kwargs):
         queryset = CourseParticipant.objects.filter(user=self.request.user)
         serializer = BaseCourseParticipantWithDetailsSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=['get'], url_path='assigned-course-details')
+    def get_assigned_course_details(self, request, **kwargs):
+        course = get_object_or_404(
+            Course
+            .objects
+            .filter(participants__user=self.request.user)
+            .prefetch_related('sections__items'), pk=kwargs['pk']
+        )
+        serializer = AssignedCourseDetailsSerializer(course)
         return Response(serializer.data, status=status.HTTP_200_OK)
