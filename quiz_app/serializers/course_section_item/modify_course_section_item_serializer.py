@@ -13,9 +13,17 @@ class ModifyCourseSectionItemSerializer(ModelSerializer):
         course_section_id = self.context['course_section_id']
         return CourseSectionItem \
             .objects \
-            .create(course_section_id=course_section_id, size=data.size,
-                    content_type=data.content_type, **validated_data)
+            .create(course_section_id=course_section_id,
+                    size=data.size if data is not None else 0,
+                    content_type=data.content_type if data is not None else None,
+                    **validated_data)
 
     def update(self, instance, validated_data):
-        instance.data.delete()
+        data = validated_data['data'] if 'data' in validated_data else None
+        if data is not None:
+            instance.data.delete()
+            instance.size = data.size
+            instance.content_type = data.content_type
+        else:
+            validated_data['data'] = instance.data
         return super(ModifyCourseSectionItemSerializer, self).update(instance, validated_data)
