@@ -12,5 +12,6 @@ class IsCourseParticipant(BasePermission):
         participant = CourseParticipant \
             .objects \
             .filter(course_id=view.kwargs['course_pk'] if 'course_pk' in view.kwargs else view.kwargs['pk']) \
+            .filter(user=request.user) \
             .first()
         return participant is not None and participant.user == request.user
