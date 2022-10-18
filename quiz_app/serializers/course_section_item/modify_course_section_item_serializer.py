@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from rest_framework.serializers import ModelSerializer
 
 from quiz_app.models.course_section_item import CourseSectionItem
@@ -10,6 +12,7 @@ class ModifyCourseSectionItemSerializer(ModelSerializer):
 
     def create(self, validated_data):
         data = validated_data['data']
+        validated_data['data'].name = uuid4().hex
         course_section_id = self.context['course_section_id']
         return CourseSectionItem \
             .objects \
@@ -24,6 +27,7 @@ class ModifyCourseSectionItemSerializer(ModelSerializer):
             instance.data.delete()
             instance.size = data.size
             instance.content_type = data.content_type
+            validated_data['data'].name = uuid4().hex
         else:
             validated_data['data'] = instance.data
         return super(ModifyCourseSectionItemSerializer, self).update(instance, validated_data)
