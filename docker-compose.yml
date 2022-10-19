@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  api:
+    image: ${DOCKER_REPO}:${DOCKER_TAG}
+    init: true
+    ports:
+      - "80:80"
+    environment:
+      - DEBUG
+      - SECRET_KEY
+      - ALLOWED_HOSTS
+      - DATABASE_NAME
+      - DATABASE_HOST
+      - DATABASE_USER
+      - DATABASE_PASSWORD
+      - CORS_ALLOWED_ORIGINS
+      - EMAIL_HOST
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
+      - EMAIL_PORT
+      - DEFAULT_FROM_EMAIL
+      - AWS_S3_ENDPOINT_URL
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_STORAGE_BUCKET_NAME
+
+
+
+
+
+
+
+
