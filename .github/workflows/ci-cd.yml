@@ -54,6 +54,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: us-east-1
           application_name: quiz_api
-          environment_name: quiz_api_env
+          environment_name: quiz-api-dev
           version_label: ${{ env.VERSION }}
           deployment_package: ${{ env.COMPOSE_FILE }}
