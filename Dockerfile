@@ -25,7 +25,7 @@ RUN apt-get update \
 RUN pip install --upgrade pip
 RUN pip install pipenv
 COPY Pipfile Pipfile.lock /app/
-RUN pipenv install
+RUN pipenv install --system
 COPY . .
 EXPOSE 80
-CMD .venv/bin/gunicorn quiz.wsgi -w 5 -b 0.0.0.0:80
+CMD gunicorn quiz.wsgi -w 5 -b 0.0.0.0:80
