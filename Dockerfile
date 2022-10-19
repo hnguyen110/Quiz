@@ -13,5 +13,6 @@ FROM python:alpine3.16 as production
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 COPY --from=build /app /app
+RUN apk add --no-cache mariadb-connector-c libgcc
 EXPOSE 80
-CMD .venv/bin/gunicorn quiz.wsgi -w 10 -b 0.0.0.0:80
+CMD .venv/bin/gunicorn quiz.wsgi -w 5 -b 0.0.0.0:80
