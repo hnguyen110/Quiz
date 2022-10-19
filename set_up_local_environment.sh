@@ -6,7 +6,7 @@ export DATABASE_NAME
 export DATABASE_HOST
 export DATABASE_USER
 export DATABASE_PASSWORD
-export CORS_ALLOWED_ORIGINS='http://localhost:3000'
+export CORS_ALLOWED_ORIGINS=http://localhost:3000
 export EMAIL_HOST=localhost
 export EMAIL_HOST_USER
 export EMAIL_HOST_PASSWORD
