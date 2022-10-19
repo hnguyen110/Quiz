@@ -44,16 +44,16 @@ jobs:
         run: |
           envsubst < docker-compose.yml > ${{ env.COMPOSE_FILE }}
           echo "Created ${{ env.COMPOSE_FILE }}"
-#      - name: Deploy to Elastic Beanstalk
-#        env:
-#          VERSION: ${{ github.ref_name }}
-#          COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
-#        uses: einaregilsson/beanstalk-deploy@v20
-#        with:
-#          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          region: us-east-1
-#          application_name: quiz_api
-#          environment_name: quiz_api_env
-#          version_label: ${{ env.VERSION }}
-#          deployment_package: ${{ env.COMPOSE_FILE }}
+      - name: Deploy to Elastic Beanstalk
+        env:
+          VERSION: ${{ github.ref_name }}
+          COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
+        uses: einaregilsson/beanstalk-deploy@v20
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: us-east-1
+          application_name: quiz_api
+          environment_name: quiz_api_env
+          version_label: ${{ env.VERSION }}
+          deployment_package: ${{ env.COMPOSE_FILE }}
