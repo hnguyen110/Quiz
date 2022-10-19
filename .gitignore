@@ -1,4 +1,5 @@
 general.log
 db.sqlite3
 media/
+static/
 .idea/

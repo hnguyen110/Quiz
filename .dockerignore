@@ -1,0 +1,6 @@
+media/
+db.sqlite3/
+set_up_local_environment.sh
+local-stack.sh
+general.log
+.gitignore
