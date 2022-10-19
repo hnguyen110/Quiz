@@ -30,7 +30,7 @@ jobs:
       - name: Build and push to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: fragments
+          ECR_REPOSITORY: quiz_api
           VERSION_TAG: ${{ github.ref_name }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$VERSION_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
@@ -38,22 +38,22 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
       - name: Create compose file with specific Docker image info
         env:
-          DOCKER_REPO: ${{ steps.login-ecr.outputs.registry }}/fragments
+          DOCKER_REPO: ${{ steps.login-ecr.outputs.registry }}/quiz_api
           DOCKER_TAG: ${{ github.ref_name }}
           COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
         run: |
           envsubst < docker-compose.yml > ${{ env.COMPOSE_FILE }}
           echo "Created ${{ env.COMPOSE_FILE }}"
-      - name: Deploy to Elastic Beanstalk
-        env:
-          VERSION: ${{ github.ref_name }}
-          COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: us-east-1
-          application_name: fragments
-          environment_name: fragments-env
-          version_label: ${{ env.VERSION }}
-          deployment_package: ${{ env.COMPOSE_FILE }}
+#      - name: Deploy to Elastic Beanstalk
+#        env:
+#          VERSION: ${{ github.ref_name }}
+#          COMPOSE_FILE: deploy-${{ github.ref_name }}.yml
+#        uses: einaregilsson/beanstalk-deploy@v20
+#        with:
+#          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          region: us-east-1
+#          application_name: quiz_api
+#          environment_name: quiz_api_env
+#          version_label: ${{ env.VERSION }}
+#          deployment_package: ${{ env.COMPOSE_FILE }}
