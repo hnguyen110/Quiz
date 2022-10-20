@@ -17,7 +17,11 @@ from utilities.permissions.is_course_participant import IsCourseParticipant
 
 
 class BaseCourseViewSet(ModelViewSet):
-    serializer_class = BaseCourseSerializer
+    def get_serializer_class(self):
+        if self.action == 'assign_participants':
+            return ModifyCourseParticipantsSerializer
+        else:
+            return BaseCourseSerializer
 
     def get_permissions(self):
         if self.action == 'retrieve':
