@@ -11,6 +11,8 @@ from quiz_app.serializers.course.assigned_course_details_serializer import Assig
 from quiz_app.serializers.course.base_course_serializer import BaseCourseSerializer
 from quiz_app.serializers.course_participant.base_course_participant_with_details_serializer import \
     BaseCourseParticipantWithDetailsSerializer
+from quiz_app.serializers.course_participant.modify_course_participants_serializer import \
+    ModifyCourseParticipantsSerializer
 from utilities.permissions.is_course_participant import IsCourseParticipant
 
 
@@ -54,4 +56,16 @@ class BaseCourseViewSet(ModelViewSet):
             .prefetch_related('sections__items'), pk=kwargs['pk']
         )
         serializer = AssignedCourseDetailsSerializer(course)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=['post'], url_path='assign-participants')
+    def assign_participants(self, request, **kwargs):
+        serializer = ModifyCourseParticipantsSerializer(
+            data=request.data,
+            context={
+                'course_id': kwargs['pk']
+            }
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)

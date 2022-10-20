@@ -1,7 +1,7 @@
 #!/bin/sh
 export DEBUG=True
 export SECRET_KEY=O4k6xexA4KgZq5lZdETMdO3xjzuuN2qx3k2Itl5ctSZVgGeoEc
-export ALLOWED_HOSTS=0.0.0.0
+export ALLOWED_HOSTS=127.0.0.1
 export DATABASE_NAME
 export DATABASE_HOST
 export DATABASE_USER
