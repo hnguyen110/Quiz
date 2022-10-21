@@ -8,13 +8,40 @@ Quizzes is a private platform for learning computer science by practicing mock e
 - [cindy-jang](https://github.com/CindyJang1)
 
 
-## Installation
+## System Requirements
+
 Please ensure you have installed these components on your computer before running the application.
 
 - Docker
 - Local MySQL server
 - Python, version 3.10.6
 - Pipenv, version 2022.9.4
+- Nodejs, version v16.17.0
+- Npm, version 8.15.0
+- Yarn, version 1.22.17
+## Frontend Installation
+
+Clone the project from GitHub.
+```bash
+git clone git@github.com:hnguyen110/Quiz-Client-UI.git
+```
+
+Go inside the application folder and install the dependencies.
+```bash
+yarn install
+```
+
+Run the Tailwind script to watch for CSS changes.
+```bash
+yarn tailwind
+```
+
+Start the local development server
+```bash
+yarn dev
+```
+
+## Backend Installation
 
 Clone the project from GitHub.
 ```bash
@@ -45,7 +72,6 @@ python manage.py migrate
 
 Start Docker and set up the local S3 server.
 ```bash
-docker run --rm -it -d -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
 ./local-stack.sh
 ```
 
@@ -56,7 +82,7 @@ python manage.py runserver
 
 ## Documentation
 
-The application uses Swagger and the internal API dashboard from DRF for documentation. You can use Swagger to generate the API specification file and import it to Postman to make API requests to the server. Swagger also shows all the APIs of the application at a higher level. Or you can use the internal API dashboard if you need to debug the API and profile the SQL commands.
+The application uses Swagger and the internal interactive API dashboard from DRF. You can generate the API documentation that can be imported to Postman to perform API requests to the server using Swagger. Swagger also shows all the APIs supported by the application at a higher level. Or you can use the internal API dashboard in case of SQL command inspection.
 
 View the Swagger documentation by visiting the following location.
 ```bash
