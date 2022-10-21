@@ -1,4 +1,3 @@
-
 # Quizzes
 
 Quizzes is a private platform for learning computer science by practicing mock exams and watching hands-on videos. 
@@ -94,10 +93,14 @@ View the Swagger documentation by visiting the following location.
 http://127.0.0.1:8000/swagger/
 ```
 
+<img width="1440" alt="Screen Shot 2022-10-21 at 1 43 00 PM" src="https://user-images.githubusercontent.com/80547043/197257012-abadf986-d0b3-47b9-8722-ab7ffb95ae74.png">
+
 View the Redoc documentation by visiting the following location.
 ```bash
 http://127.0.0.1:8000/redoc/
 ```
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 1 42 43 PM" src="https://user-images.githubusercontent.com/80547043/197257072-f5ced53f-be26-4320-9005-8c120a341404.png">
 
 Generate the API specification to use with Postman or Insomnia by visiting the following location.
 ```bash
