@@ -45,6 +45,7 @@ python manage.py migrate
 
 Start Docker and set up the local S3 server.
 ```bash
+docker run --rm -it -d -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
 ./local-stack.sh
 ```
 
@@ -55,7 +56,7 @@ python manage.py runserver
 
 ## Documentation
 
-The application uses Swagger and the internal interactive API dashboard from DRF. You can generate the API documentation that can be imported to Postman to perform API requests to the server using Swagger. Swagger also shows all the APIs supported by the application at a higher level. Or you can use the internal API dashboard in case of SQL command inspection.
+The application uses Swagger and the internal API dashboard from DRF for documentation. You can use Swagger to generate the API specification file and import it to Postman to make API requests to the server. Swagger also shows all the APIs of the application at a higher level. Or you can use the internal API dashboard if you need to debug the API and profile the SQL commands.
 
 View the Swagger documentation by visiting the following location.
 ```bash
