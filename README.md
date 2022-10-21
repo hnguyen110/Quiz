@@ -110,3 +110,26 @@ The application requires some environment variables before it can run. You can c
     
 `AWS_STORAGE_BUCKET_NAME` - the bucket name of the S3 server to specify where to store the media contents
 
+## Application Demo
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 53 03 PM" src="https://user-images.githubusercontent.com/80547043/197249988-bf3f4f2e-0653-439e-90e3-cc815710472e.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 54 32 PM" src="https://user-images.githubusercontent.com/80547043/197250013-b04e5ad2-5c60-4e10-b95f-5dd32624b02c.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 54 54 PM" src="https://user-images.githubusercontent.com/80547043/197250050-d021df99-ca59-40d9-8e3f-27e9ef33676d.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 55 07 PM" src="https://user-images.githubusercontent.com/80547043/197250079-524ec3ca-9431-453b-9327-ffdf0a033ece.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 55 17 PM" src="https://user-images.githubusercontent.com/80547043/197250097-78929972-b2e0-45bd-96c2-46ab4a1fefca.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 56 05 PM" src="https://user-images.githubusercontent.com/80547043/197250158-8d760dba-0b8d-4196-bcd2-ea579e2600b6.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 56 50 PM" src="https://user-images.githubusercontent.com/80547043/197250184-1024161a-c4fe-469d-b9fe-9438ab16a6d8.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 55 42 PM" src="https://user-images.githubusercontent.com/80547043/197250119-453326a3-add6-4634-8f80-fa3b9bede20e.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 57 15 PM" src="https://user-images.githubusercontent.com/80547043/197250205-ae763c6e-1544-4d12-83ec-ad154997ddf3.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 57 45 PM" src="https://user-images.githubusercontent.com/80547043/197250218-fba7bbb3-f09e-46f5-aa63-b22d4a272913.png">
+
+<img width="1440" alt="Screen Shot 2022-10-21 at 12 59 48 PM" src="https://user-images.githubusercontent.com/80547043/197250236-9ed07e2e-71f1-41b1-b82b-5dbc9b52e1c9.png">
