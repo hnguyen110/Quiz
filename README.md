@@ -43,6 +43,11 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+Start Docker and set up the local S3 server.
+```bash
+./local-stack.sh
+```
+
 Start the local development server.
 ```bash
 python manage.py runserver 
