@@ -7,6 +7,11 @@ Quizzes is a private platform for learning computer science by practicing mock e
 - [hnguyen110](https://github.com/hnguyen110)
 - [cindy-jang](https://github.com/CindyJang1)
 
+## System Design
+
+![Quiz](https://user-images.githubusercontent.com/80547043/197255121-167c2053-e8dd-4556-a02b-c1c6634143f3.png)
+
+![db](https://user-images.githubusercontent.com/80547043/197254733-bf9eb3ee-a354-48cb-8655-64bfc2350205.png)
 
 ## System Requirements
 
