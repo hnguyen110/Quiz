@@ -36,10 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'rest_framework',
     'djoser',
     'corsheaders',
     'django_rest_passwordreset',
+    'stripe',
     'core',
     'quiz_app',
 ]
@@ -75,26 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'quiz.wsgi.application'
-
-if DEBUG:
-    INSTALLED_APPS += 'debug_toolbar',
-    MIDDLEWARE += 'debug_toolbar.middleware.DebugToolbarMiddleware',
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ['DATABASE_NAME'],
-            'HOST': os.environ['DATABASE_HOST'],
-            'USER': os.environ['DATABASE_USER'],
-            'PASSWORD': os.environ['DATABASE_PASSWORD']
-        }
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -148,6 +130,9 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ]
 }
 
 AUTH_USER_MODEL = 'core.User'
@@ -171,10 +156,30 @@ DJOSER = {
 }
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_S3_ENDPOINT_URL = os.environ['AWS_S3_ENDPOINT_URL']
+AWS_S3_ENDPOINT_URL = os.environ.get('AWS_S3_ENDPOINT_URL', None)
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+
+if DEBUG:
+    INSTALLED_APPS += 'debug_toolbar',
+    MIDDLEWARE += 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['DATABASE_NAME'],
+            'HOST': os.environ['DATABASE_HOST'],
+            'USER': os.environ['DATABASE_USER'],
+            'PASSWORD': os.environ['DATABASE_PASSWORD']
+        }
+    }
 
 LOGGING = {
     'version': 1,

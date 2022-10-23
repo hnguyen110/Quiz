@@ -6,4 +6,4 @@ from quiz_app.models.quiz import Quiz
 class GetAssignedQuizSerializer(ModelSerializer):
     class Meta:
         model = Quiz
-        fields = ['id', 'title', 'description', 'participants']
+        fields = ['id', 'title', 'description', 'price', 'participants']

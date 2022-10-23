@@ -18,6 +18,8 @@ django-rest-passwordreset = "*"
 boto3 = "*"
 django-storages = "*"
 mysqlclient = "*"
+drf-yasg = "*"
+stripe = "*"
 
 [dev-packages]
 
