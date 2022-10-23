@@ -11,8 +11,11 @@ from quiz_app.serializers.course.assigned_course_details_serializer import Assig
 from quiz_app.serializers.course.base_course_serializer import BaseCourseSerializer
 from quiz_app.serializers.course_participant.base_course_participant_with_details_serializer import \
     BaseCourseParticipantWithDetailsSerializer
+from quiz_app.serializers.course_participant.modify_course_participant_serializer import \
+    ModifyCourseParticipantSerializer
 from quiz_app.serializers.course_participant.modify_course_participants_serializer import \
     ModifyCourseParticipantsSerializer
+from quiz_app.serializers.stripe.base_payment_serializer import BasePaymentSerializer
 from utilities.permissions.is_course_participant import IsCourseParticipant
 
 
@@ -20,6 +23,8 @@ class BaseCourseViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'assign_participants':
             return ModifyCourseParticipantsSerializer
+        elif self.action == 'checkout':
+            return BasePaymentSerializer
         else:
             return BaseCourseSerializer
 
@@ -30,6 +35,8 @@ class BaseCourseViewSet(ModelViewSet):
             permission_classes = [IsAuthenticated]
         elif self.action == 'get_assigned_course_details':
             permission_classes = [IsCourseParticipant]
+        elif self.action == 'checkout':
+            permission_classes = [IsAuthenticated]
         else:
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
@@ -73,3 +80,24 @@ class BaseCourseViewSet(ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=['post'], url_path='checkout')
+    def checkout(self, request, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+        payment_serializer = BasePaymentSerializer(data=request.data, context={
+            'name': self.request.user.email,
+            'email': self.request.user.email,
+            'amount': int(course.price) * 100,
+            'currency': 'usd',
+            'description': course.title
+        })
+        payment_serializer.is_valid(raise_exception=True)
+        payment_serializer.save()
+        participant_serializer = ModifyCourseParticipantSerializer(data={
+            'user': self.request.user.pk,
+        }, context={
+            'course_id': course.pk
+        })
+        participant_serializer.is_valid(raise_exception=True)
+        participant_serializer.save()
+        return Response(participant_serializer.data, status=status.HTTP_200_OK)

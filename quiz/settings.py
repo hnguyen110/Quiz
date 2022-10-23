@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'django_rest_passwordreset',
+    'stripe',
     'core',
     'quiz_app',
 ]
