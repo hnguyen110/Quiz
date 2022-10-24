@@ -189,4 +189,8 @@ The application requires some environment variables before it can run. You can c
 
 <img width="1440" alt="Screen Shot 2022-10-21 at 12 57 45 PM" src="https://user-images.githubusercontent.com/80547043/197250218-fba7bbb3-f09e-46f5-aa63-b22d4a272913.png">
 
-<img width="1440" alt="Screen Shot 2022-10-21 at 12 59 48 PM" src="https://user-images.githubusercontent.com/80547043/197250236-9ed07e2e-71f1-41b1-b82b-5dbc9b52e1c9.png">
+<img width="1440" alt="Screen Shot 2022-10-24 at 2 49 12 PM" src="https://user-images.githubusercontent.com/80547043/197602825-8101bb25-ada1-4696-9e62-83e15fd16209.png">
+
+<img width="1440" alt="Screen Shot 2022-10-24 at 2 49 23 PM" src="https://user-images.githubusercontent.com/80547043/197602854-9ae8b05b-ccef-455c-aa8b-c11436d872e2.png">
+
+<img width="1440" alt="Screen Shot 2022-10-24 at 2 49 46 PM" src="https://user-images.githubusercontent.com/80547043/197602868-a4746026-4310-401c-92b6-acb2e9672b20.png">
