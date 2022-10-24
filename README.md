@@ -189,7 +189,7 @@ The application requires some environment variables before it can run. You can c
 
 <img width="1440" alt="Screen Shot 2022-10-21 at 12 57 45 PM" src="https://user-images.githubusercontent.com/80547043/197250218-fba7bbb3-f09e-46f5-aa63-b22d4a272913.png">
 
-![Uploading Screen Shot 2022-10-24 at 2.54.53 PM.png…]()
+<img width="1440" alt="Screen Shot 2022-10-24 at 2 54 53 PM" src="https://user-images.githubusercontent.com/80547043/197604465-73fc94a8-9a96-428c-9c60-823ac015fc56.png">
 
 <img width="1440" alt="Screen Shot 2022-10-24 at 2 49 12 PM" src="https://user-images.githubusercontent.com/80547043/197602825-8101bb25-ada1-4696-9e62-83e15fd16209.png">
 
