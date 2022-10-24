@@ -1,8 +1,9 @@
 # Quizzes
 
-Quizzes is a private platform for learning computer science by practicing mock exams and watching hands-on videos. 
+Quizzes is a private platform for learning computer science by practicing mock exams and watching hands-on videos.
 
 ## Technology Stack
+
 <a href="https://www.python.org/" title="Python"><img src="https://github.com/get-icon/geticon/raw/master/icons/python.svg" alt="Python" width="40px" height="40px"></a>
 <a href="https://www.djangoproject.com/" title="Django"><img src="https://github.com/get-icon/geticon/raw/master/icons/django.svg" alt="Django" width="40px" height="40px"></a>
 <a href="https://dev.mysql.com/" title="MySQL"><img src="https://github.com/get-icon/geticon/raw/master/icons/mysql.svg" alt="MySQL" width="40px" height="40px"></a>
@@ -44,24 +45,29 @@ Please ensure you have installed these components on your computer before runnin
 - Nodejs, version v16.17.0
 - Npm, version 8.15.0
 - Yarn, version 1.22.17
+
 ## Frontend Installation
 
 Clone the project from GitHub.
+
 ```bash
 git clone git@github.com:hnguyen110/Quiz-Client-UI.git
 ```
 
 Go inside the application folder and install the dependencies.
+
 ```bash
 yarn install
 ```
 
 Run the Tailwind script to watch for CSS changes.
+
 ```bash
 yarn tailwind
 ```
 
 Start the local development server
+
 ```bash
 yarn dev
 ```
@@ -69,47 +75,58 @@ yarn dev
 ## Backend Installation
 
 Clone the project from GitHub.
+
 ```bash
 git clone git@github.com:hnguyen110/Quiz.git
 ```
 
 Go inside the project and run pipenv shell to create an environment for the application.
+
 ```bash
 pipenv shell
 ```
 
 Install the application dependencies.
+
 ```bash
 pipenv install
 ```
 
 Set up the environment variables in the development environment.
+
 ```bash
 chmod +x set_up_local_environment.sh
 source ./set_up_local_environment.sh
 ```
 
 Create database migrations and apply the migrations to create a local database if you have not set up the database yet.
+
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 Start Docker and set up the local S3 server.
+
 ```bash
 ./local-stack.sh
 ```
 
 Start the local development server.
+
 ```bash
 python manage.py runserver 
 ```
 
 ## Documentation
 
-The application uses Swagger and the internal interactive API dashboard from DRF. You can generate the API documentation that can be imported to Postman to perform API requests to the server using Swagger. Swagger also shows all the APIs supported by the application at a higher level. Or you can use the internal API dashboard in case of SQL command inspection.
+The application uses Swagger and the internal interactive API dashboard from DRF. You can generate the API documentation
+that can be imported to Postman to perform API requests to the server using Swagger. Swagger also shows all the APIs
+supported by the application at a higher level. Or you can use the internal API dashboard in case of SQL command
+inspection.
 
 View the Swagger documentation by visiting the following location.
+
 ```bash
 http://127.0.0.1:8000/swagger/
 ```
@@ -117,6 +134,7 @@ http://127.0.0.1:8000/swagger/
 <img width="1440" alt="Screen Shot 2022-10-21 at 1 43 00 PM" src="https://user-images.githubusercontent.com/80547043/197257012-abadf986-d0b3-47b9-8722-ab7ffb95ae74.png">
 
 View the Redoc documentation by visiting the following location.
+
 ```bash
 http://127.0.0.1:8000/redoc/
 ```
@@ -124,12 +142,15 @@ http://127.0.0.1:8000/redoc/
 <img width="1440" alt="Screen Shot 2022-10-21 at 1 42 43 PM" src="https://user-images.githubusercontent.com/80547043/197257072-f5ced53f-be26-4320-9005-8c120a341404.png">
 
 Generate the API specification to use with Postman or Insomnia by visiting the following location.
+
 ```bash
 http://127.0.0.1:8000/swagger.json
 ```
+
 ## Environment Variables
 
-The application requires some environment variables before it can run. You can customize these variables in the set_up_local_environment.sh file and then run the bash file again to apply the changes to your computer.
+The application requires some environment variables before it can run. You can customize these variables in the
+set_up_local_environment.sh file and then run the bash file again to apply the changes to your computer.
 
 `DEBUG` - development mode set to True by default for local development.
 
@@ -146,23 +167,24 @@ The application requires some environment variables before it can run. You can c
 `DATABASE_PASSWORD` - the password to access the database server.
 
 `CORS_ALLOWED_ORIGINS` - the IP address, domain name or hostname of the front-end server
-    
+
 `EMAIL_HOST` - the IP address, domain name or hostname of the SMTP server
 
 `EMAIL_HOST_USER` - the username to access the SMTP server.
-    
+
 `EMAIL_HOST_PASSWORD` - the password to access the SMTP server.
 
 `EMAIL_PORT` - the port of the SMTP server.
 
-`DEFAULT_FROM_EMAIL` - the default sender email address for the application  
+`DEFAULT_FROM_EMAIL` - the default sender email address for the application
 
-`AWS_S3_ENDPOINT_URL` - the IP address, domain name or the hostname of the S3 server (do not set this variable in production)
+`AWS_S3_ENDPOINT_URL` - the IP address, domain name or the hostname of the S3 server (do not set this variable in
+production)
 
 `AWS_ACCESS_KEY_ID` - the AWS IAM username to access the S3 server.
 
 `AWS_SECRET_ACCESS_KEY` - the AWS IAM password to access the S3 server.
-    
+
 `AWS_STORAGE_BUCKET_NAME` - the bucket name of the S3 server to specify where to store the media contents
 
 `STRIPE_SECRET_KEY` - the stripe private API key

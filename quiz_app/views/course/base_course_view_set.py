@@ -31,6 +31,8 @@ class BaseCourseViewSet(ModelViewSet):
     def get_permissions(self):
         if self.action == 'retrieve':
             permission_classes = [IsCourseParticipant]
+        elif self.action == 'list':
+            permission_classes = [IsAuthenticated]
         elif self.action == 'get_assigned_courses':
             permission_classes = [IsAuthenticated]
         elif self.action == 'get_assigned_course_details':
@@ -45,7 +47,7 @@ class BaseCourseViewSet(ModelViewSet):
         if self.request.user.is_staff:
             return Course.objects.filter(owner=self.request.user)
         else:
-            return Course.objects.all()
+            return Course.objects.exclude(participants__user=self.request.user)
 
     def get_serializer_context(self):
         return {
